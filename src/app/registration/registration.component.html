@@ -1,29 +1,38 @@
-<div class="row">
-  <form #userForm="ngForm" class="col s12">
+<div *ngIf="!submitted" class="row">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" class="col s12">
     <div class="row">
       <div class="input-field col s12">
-        <input id="username" type="text" class="validate" [(ngModel)]="user.username" name="username" required #username="ngModel">
+        <input id="username" type="text" [class.valid]="username.valid && !alreadyTakenUsername"
+               [(ngModel)]="user.username" name="username" required #username="ngModel">
         <label for="username">Nom d'utilisateur</label>
-        <span class="helper-text" *ngIf="!username.valid && username.touched">Le nom d'utilisateur est obligatoire.</span>
+        <span class="helper-text"
+              *ngIf="!username.valid && username.touched">Le nom d'utilisateur est obligatoire.</span>
+        <span class="helper-text" *ngIf="alreadyTakenUsername">Un utilisateur avec ce nom existe déjà.</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate" [(ngModel)]="user.email" name="email" required #email="ngModel">
+        <input id="email" type="email" [class.valid]="email.valid && !alreadyTakenEmail" [(ngModel)]="user.email"
+               name="email" required #email="ngModel">
         <label for="email">Email</label>
         <span class="helper-text" *ngIf="!email.valid && email.touched">Entrez une adresse électronique valide.</span>
+        <span class="helper-text" *ngIf="alreadyTakenEmail">Un compte avec cette adresse e-mail existe déjà.</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="password" required #password="ngModel">
+        <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="password" required
+               #password="ngModel">
         <label for="password">Mot de passe</label>
         <span class="helper-text" *ngIf="!password.valid && password.touched">Le mot de passe est obligatoire.</span>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password_confirmation" type="password" [class.valid]="passwordConfirmation === user.password" [class.invalid]="passwordConfirmation !== user.password && passwordConfirmationField.touched" [(ngModel)]="passwordConfirmation" name="password-confirmation" required #passwordConfirmationField="ngModel">
+        <input id="password_confirmation" type="password" [class.valid]="passwordConfirmation === user.password"
+               [class.invalid]="passwordConfirmation !== user.password && passwordConfirmationField.touched"
+               [(ngModel)]="passwordConfirmation" name="password-confirmation" required
+               #passwordConfirmationField="ngModel">
         <label for="password_confirmation">Mot de passe (confirmation)</label>
         <span class="helper-text" *ngIf="!passwordConfirmationField.valid && passwordConfirmationField.touched">Entrez le mot de passe une nouvelle fois.</span>
         <span class="helper-text" *ngIf="user.password !== passwordConfirmation && passwordConfirmationField.touched">Les mots de passe ne correspondent pas.</span>
@@ -31,8 +40,27 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <button (click)="onSubmit()" class="btn btn-large waves-effect waves-light" type="submit">S'inscrire</button>
+        <button class="btn btn-large waves-effect waves-light" type="submit"
+                [disabled]="!userForm.form.valid || user.password != passwordConfirmation">S'inscrire
+        </button>
       </div>
     </div>
   </form>
+</div>
+
+<div *ngIf="submitted">
+
+  <div class="row center">
+    <div class="col s12">
+      <h1>Salut, {{user.username}} 👋</h1>
+
+      <h4 class="light">Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.</h4>
+
+    </div>
+  </div>
+
+  <div class="row center">
+    <a class="btn btn-large" routerLink="/connexion">Connexion</a>
+  </div>
+
 </div>
