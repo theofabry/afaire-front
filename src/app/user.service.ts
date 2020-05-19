@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { User } from './user';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class UserService {
 
   usersUrl = environment.baseUrl + '/users/';
+  loginUrl = this.usersUrl + 'login/';
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,17 @@ export class UserService {
     return this.http.post<User>(this.usersUrl, user).pipe(
       catchError(this.handleError),
     );
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(this.loginUrl, { username, password}).pipe(
+      tap(response => { localStorage.setItem('token', response.token); }),
+      catchError(this.handleError),
+    );
+  }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('token') !== null;
   }
 
   handleError(errors) {

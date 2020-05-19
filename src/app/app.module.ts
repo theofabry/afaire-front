@@ -8,12 +8,16 @@ import { IndexComponent } from './index/index.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
