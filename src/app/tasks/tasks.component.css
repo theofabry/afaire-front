@@ -1,0 +1,9 @@
+.card-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.task-container {
+  display: inline-block;
+  float: none;
+}
