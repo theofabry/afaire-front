@@ -9,8 +9,8 @@
       <span class="white-text">{{task.content}}</span>
     </div>
   </div>
-  <div *ngIf="tasks[day].length === 0" class="col s12 m2 task-container">
-    <div class="grey card-panel" >
+  <div class="col s12 m2 task-container">
+    <div class="grey card-panel card-add" routerLink="/taches/ajouter" [queryParams]="{ due_date: day }">
       <span class="white-text"><i class="material-icons tiny">add</i> Ajouter</span>
     </div>
   </div>

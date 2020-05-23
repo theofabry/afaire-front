@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col s12">
+    <h4 class="center">Encore du travail... 🤯</h4>
+  </div>
+</div>
+
+<div class="row">
+  <form class="col s12 m6 offset-m3" (ngSubmit)="onSubmit()" #addTaskForm="ngForm">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="content" class="materialize-textarea" [(ngModel)]="task.content" [class.valid]="content.valid" [class.invalid]="content.invalid && content.touched" name="content" required #content="ngModel"></textarea>
+        <label for="content">Qu'est-ce qu'il faut faire ?</label>
+        <span class="helper-text"
+              *ngIf="!content.valid && content.touched">Ouais, mais sans contenu c'est inutile non ?</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="date" id="date" class="date-input" [(ngModel)]="task.due_date" name="due_date" required [class.valid]="due_date.valid" [class.invalid]="due_date.invalid && due_date.touched" #due_date="ngModel">
+        <label for="date" class="date-label">Pour quand ?</label>
+        <span class="helper-text"
+              *ngIf="!due_date.valid && due_date.touched">Si tu me dis pas pour quand, je pourrai pas te le rappeler 😢</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <button [disabled]="!addTaskForm.form.valid" class="btn btn-large waves-effect waves-light blue" type="submit" name="action">Eh ben c'est parti alors. 🏃
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

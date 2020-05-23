@@ -19,4 +19,10 @@ export class TaskService {
     }});
   }
 
+  addTask(task: Task) {
+    return this.http.post(this.tasksUrl, task, { headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }});
+  }
+
 }
