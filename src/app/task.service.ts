@@ -13,8 +13,8 @@ export class TaskService {
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksUrl, { headers: {
+  getTasks(): Observable<any[]> {
+    return this.http.get<any[]>(this.tasksUrl, { headers: {
         Authorization: 'Token ' + localStorage.getItem('token')
     }});
   }

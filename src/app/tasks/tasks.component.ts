@@ -11,8 +11,7 @@ import { Task } from '../task';
 })
 export class TasksComponent implements OnInit {
 
-  tasks: Task[] = [];
-  days: string[] = [];
+  tasks: any[] = [];
   dayKeys: string[] = [];
 
   constructor(private userService: UserService, private router: Router, private taskService: TaskService) { }

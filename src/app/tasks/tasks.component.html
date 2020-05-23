@@ -1,12 +1,17 @@
 <div class="row card-container" *ngFor="let day of dayKeys">
-  <div class="col s2 m2 task-container">
+  <div class="col s12 m2 task-container">
     <div class="card-panel blue">
       <span class="white-text">{{day}}</span>
     </div>
   </div>
-  <div *ngFor="let task of tasks[day]" class="col s2 m2 task-container">
+  <div *ngFor="let task of tasks[day]; index as i" class="col s12 m2 task-container" [class.offset-m2]="i !== 0 && i % 5 === 0">
     <div class="card-panel" [class.green]="task.status === 0" [class.purple]="task.status === 1" [class.amber]="task.status === 2" [class.red]="task.status === 3" [class.blue]="task.status === 4" [class.grey]="!task.status">
       <span class="white-text">{{task.content}}</span>
+    </div>
+  </div>
+  <div *ngIf="tasks[day].length === 0" class="col s12 m2 task-container">
+    <div class="grey card-panel" >
+      <span class="white-text"><i class="material-icons tiny">add</i> Ajouter</span>
     </div>
   </div>
 </div>
