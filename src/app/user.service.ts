@@ -32,6 +32,10 @@ export class UserService {
     return localStorage.getItem('token') !== null;
   }
 
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
   handleError(errors) {
     return throwError(errors);
   }

@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
   { path: 'accueil', component: IndexComponent },
   { path: 'inscription', component: RegistrationComponent },
   { path: 'connexion', component: LoginComponent },
+  { path: 'deconnexion', component: LogoutComponent },
   { path: 'taches', component: TasksComponent },
   { path: 'taches/ajouter', component: TaskAddComponent },
   { path: 'taches/:id', component: TaskEditComponent },
