@@ -38,4 +38,14 @@ export class TaskEditComponent implements OnInit {
     });
   }
 
+  onDeleteSubmit(): void {
+    this.taskService.deleteTask(this.task).subscribe(() => {
+      this.router.navigate(['/taches']);
+    }, error => {
+      const errors = error.error;
+
+      console.log(errors);
+    });
+  }
+
 }

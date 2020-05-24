@@ -38,4 +38,10 @@ export class TaskService {
       }});
   }
 
+  deleteTask(task: Task): Observable<any> {
+    return this.http.delete(this.tasksUrl + task.id, { headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }});
+  }
+
 }
