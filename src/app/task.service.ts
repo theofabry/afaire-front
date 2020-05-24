@@ -25,4 +25,17 @@ export class TaskService {
       }});
   }
 
+  getTask(id: number): Observable<Task> {
+    return this.http.get<Task>(this.tasksUrl + id, { headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }});
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    return this.http.patch<Task>(this.tasksUrl + task.id, task, {
+      headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }});
+  }
+
 }

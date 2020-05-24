@@ -5,12 +5,12 @@
     </div>
   </div>
   <div *ngFor="let task of tasks[day]; index as i" class="col s12 m2 task-container" [class.offset-m2]="i !== 0 && i % 5 === 0">
-    <div class="card-panel" [class.green]="task.status === 0" [class.purple]="task.status === 1" [class.amber]="task.status === 2" [class.red]="task.status === 3" [class.blue]="task.status === 4" [class.grey]="!task.status">
+    <div routerLink="/taches/{{task.id}}" class="card-panel card-link" [class.green]="task.status === 0" [class.purple]="task.status === 1" [class.amber]="task.status === 2" [class.red]="task.status === 3" [class.blue]="task.status === 4" [class.grey]="task.status === 5">
       <span class="white-text">{{task.content}}</span>
     </div>
   </div>
   <div class="col s12 m2 task-container">
-    <div class="grey card-panel card-add" routerLink="/taches/ajouter" [queryParams]="{ due_date: day }">
+    <div class="grey card-panel card-link" routerLink="/taches/ajouter" [queryParams]="{ due_date: day }">
       <span class="white-text"><i class="material-icons tiny">add</i> Ajouter</span>
     </div>
   </div>

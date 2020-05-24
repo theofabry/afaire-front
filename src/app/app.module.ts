@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskAddComponent } from './task-add/task-add.component';
+import { TaskEditComponent } from './task-edit/task-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TaskAddComponent } from './task-add/task-add.component';
     RegistrationComponent,
     LoginComponent,
     TasksComponent,
-    TaskAddComponent
+    TaskAddComponent,
+    TaskEditComponent
   ],
   imports: [
     BrowserModule,
