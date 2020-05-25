@@ -1,7 +1,7 @@
 <div class="row card-container" *ngFor="let day of dayKeys">
   <div class="col s12 m2 task-container">
     <div class="card-panel blue">
-      <span class="white-text">{{day}}</span>
+      <span class="white-text">{{day.split('-')[2]}} {{months[day.split('-')[1]]}} {{day.split('-')[0]}}</span>
     </div>
   </div>
   <div *ngFor="let task of tasks[day]; index as i" class="col s12 m2 task-container"

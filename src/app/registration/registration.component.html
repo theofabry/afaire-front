@@ -1,23 +1,23 @@
 <div class="container">
-  <div *ngIf="!submitted" class="row">
+  <div *ngIf="!registrationSuccessful" class="row">
     <form #userForm="ngForm" (ngSubmit)="onSubmit()" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input id="username" type="text" [class.valid]="username.valid && !alreadyTakenUsername"
-                 [(ngModel)]="user.username" name="username" required #username="ngModel">
+                 [(ngModel)]="user.username" name="username" required #username="ngModel" [class.invalid]="(!username.valid && username.touched) || alreadyTakenUsername">
           <label for="username">Nom d'utilisateur</label>
-          <span class="helper-text"
+          <span class="helper-text red-text"
                 *ngIf="!username.valid && username.touched">Le nom d'utilisateur est obligatoire.</span>
-          <span class="helper-text" *ngIf="alreadyTakenUsername">Un utilisateur avec ce nom existe déjà.</span>
+          <span class="helper-text red-text" *ngIf="alreadyTakenUsername">Un utilisateur avec ce nom existe déjà.</span>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" [class.valid]="email.valid && !alreadyTakenEmail" [(ngModel)]="user.email"
+          <input id="email" type="email" [class.valid]="email.valid && !alreadyTakenEmail" [(ngModel)]="user.email" [class.invalid]="(!email.valid && email.touched) || alreadyTakenEmail"
                  name="email" required #email="ngModel">
           <label for="email">Email</label>
-          <span class="helper-text" *ngIf="!email.valid && email.touched">Entrez une adresse électronique valide.</span>
-          <span class="helper-text" *ngIf="alreadyTakenEmail">Un compte avec cette adresse e-mail existe déjà.</span>
+          <span class="helper-text red-text" *ngIf="!email.valid && email.touched">Entrez une adresse électronique valide.</span>
+          <span class="helper-text red-text" *ngIf="alreadyTakenEmail">Un compte avec cette adresse e-mail existe déjà.</span>
         </div>
       </div>
       <div class="row">
@@ -42,14 +42,14 @@
       <div class="row">
         <div class="input-field col s12">
           <button class="btn btn-large waves-effect waves-light" type="submit"
-                  [disabled]="!userForm.form.valid || user.password != passwordConfirmation">S'inscrire
+                  [disabled]="!userForm.form.valid || user.password != passwordConfirmation || submitted"><span *ngIf="!submitted">S'inscrire</span><i *ngIf="submitted" class="large material-icons spin">cached</i>
           </button>
         </div>
       </div>
     </form>
   </div>
 
-  <div *ngIf="submitted">
+  <div *ngIf="registrationSuccessful">
 
     <div class="row center">
       <div class="col s12">

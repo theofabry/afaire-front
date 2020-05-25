@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TaskAddComponent implements OnInit {
 
   task: Task = new Task();
+  submitted = false;
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
@@ -19,12 +20,16 @@ export class TaskAddComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitted = true;
     this.taskService.addTask(this.task).subscribe(task => {
+      this.submitted = false;
       this.router.navigate(['/taches']);
 
     }, error => {
       const errors = error.error;
+      this.submitted = false;
 
+      // TODO : Handle error management
       console.log(errors);
     });
   }

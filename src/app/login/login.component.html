@@ -19,7 +19,7 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <button class="btn btn-large waves-effect waves-light" type="submit">Connexion
+        <button class="btn btn-large waves-effect waves-light" type="submit" [disabled]="this.submitted"><i *ngIf="submitted" class="large material-icons spin">cached</i><span *ngIf="!submitted">Connexion</span>
         </button>
       </div>
     </div>

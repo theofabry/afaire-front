@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   loginError = false;
+  submitted = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -20,11 +21,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.loginError = false;
+    this.submitted = true;
 
     this.userService.login(this.username, this.password).subscribe(response => {
+      this.submitted = false;
       this.router.navigateByUrl('/taches');
     }, error => {
       this.loginError = true;
+      this.submitted = false;
     });
   }
 
