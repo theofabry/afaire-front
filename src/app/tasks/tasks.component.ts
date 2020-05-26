@@ -29,6 +29,7 @@ export class TasksComponent implements OnInit {
     12: 'décembre',
   };
   currentDate: string;
+  loading = false;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -40,6 +41,7 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     if (!this.userService.isAuthenticated()) {
       this.router.navigateByUrl('/connexion');
     }
@@ -47,6 +49,7 @@ export class TasksComponent implements OnInit {
     this.setCurrentDate();
 
     this.taskService.getTasks().subscribe(tasks => {
+      this.loading = false;
       this.tasks = tasks;
       this.dayKeys = Object.keys(this.tasks).sort();
       setTimeout(TasksComponent.scrollToCurrentDate, 0);
@@ -76,7 +79,6 @@ export class TasksComponent implements OnInit {
     const year = parseInt(stringDate.split('-')[0], 10);
 
     const date = new Date(year, month, day);
-    console.log(date);
 
     return date.getDay() === 0 || date.getDay() === 6;
   }
