@@ -23,7 +23,7 @@
         <div class="input-field col s12">
           <input type="date" id="date" class="date-input" [(ngModel)]="task.due_date" name="due_date" required
                  [class.valid]="due_date.valid" [class.invalid]="due_date.invalid && due_date.touched"
-                 #due_date="ngModel" value="‘{{task.due_date}}">
+                 #due_date="ngModel" value="{{task.due_date}}">
           <label for="date" class="edit-label">Pour quand ?</label>
           <span class="helper-text"
                 *ngIf="!due_date.valid && due_date.touched">Si tu me dis pas pour quand, je pourrai pas te le rappeler 😢</span>
