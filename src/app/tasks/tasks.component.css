@@ -6,3 +6,7 @@
 .card-link {
   cursor: pointer;
 }
+
+.weekend {
+  background-color: red;
+}

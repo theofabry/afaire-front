@@ -1,6 +1,7 @@
 <div class="row card-container" *ngFor="let day of dayKeys">
+  <span *ngIf="currentDate === day" id="start"></span>
   <div class="col s12 m2 task-container">
-    <div class="card-panel blue">
+    <div class="card-panel" [class.indigo]="isWeekend(day)" [class.lighten-4]="isWeekend(day)" [class.blue]="!isWeekend(day)">
       <span class="white-text">{{day.split('-')[2]}} {{months[day.split('-')[1]]}} {{day.split('-')[0]}}</span>
     </div>
   </div>

@@ -7,10 +7,12 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { LogoutComponent } from './logout/logout.component';
+import { PresentationComponent } from './presentation/presentation.component';
 
 
 const routes: Routes = [
   { path: 'accueil', component: IndexComponent },
+  { path: 'presentation', component: PresentationComponent },
   { path: 'inscription', component: RegistrationComponent },
   { path: 'connexion', component: LoginComponent },
   { path: 'deconnexion', component: LogoutComponent },

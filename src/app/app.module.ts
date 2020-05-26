@@ -13,6 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { LogoutComponent } from './logout/logout.component';
+import { PresentationComponent } from './presentation/presentation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LogoutComponent } from './logout/logout.component';
     TasksComponent,
     TaskAddComponent,
     TaskEditComponent,
-    LogoutComponent
+    LogoutComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
