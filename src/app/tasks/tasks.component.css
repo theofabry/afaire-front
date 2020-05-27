@@ -14,3 +14,39 @@
 .progress {
   background-color: #0091ea;
 }
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .child {
+    flex: 0 0 90% !important;
+  }
+}
+
+.child {
+  display: flex;
+  flex: 0 0 15%;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  padding: 24px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.baby {
+  width: 100%;
+}
+
+.invisible {
+  border: none;
+  cursor: auto;
+  box-shadow: none;
+}
+
+.card-date {
+  cursor: auto;
+}
