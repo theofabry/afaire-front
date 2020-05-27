@@ -1,11 +1,15 @@
-<div class="container">
+<div *ngIf="!task" class="progress">
+  <div class="indeterminate"></div>
+</div>
+
+<div class="container" *ngIf="task">
   <div class="row">
     <div class="col s12">
       <h4 class="center">Qu'est-ce qui a changé ? 🧐</h4>
     </div>
   </div>
 
-  <div class="row" *ngIf="task">
+  <div class="row">
     <form class="col s12 m6 offset-m3" (ngSubmit)="onSubmit()" #editTaskForm="ngForm">
 
       <div class="row">
@@ -50,14 +54,16 @@
         <div class="input-field col s12">
           <button [disabled]="!editTaskForm.form.valid || submitted" class="btn btn-large waves-effect waves-light blue"
                   type="submit"
-                  name="action"><span *ngIf="!submitted">Ok, on change ça. 🏃</span><i *ngIf="submitted" class="large material-icons spin">cached</i>
+                  name="action"><span *ngIf="!submitted">Ok, on change ça. 🏃</span><i *ngIf="submitted"
+                                                                                       class="large material-icons spin">cached</i>
           </button>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <button (click)="onDeleteSubmit()" class="btn btn-large waves-effect waves-light red" type="button"
-                  name="action"><span *ngIf="!deleteSubmitted">On supprime. 💣</span><i *ngIf="deleteSubmitted" class="large material-icons spin">cached</i>
+                  name="action"><span *ngIf="!deleteSubmitted">On supprime. 💣</span><i *ngIf="deleteSubmitted"
+                                                                                        class="large material-icons spin">cached</i>
           </button>
         </div>
       </div>
