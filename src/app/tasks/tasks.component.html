@@ -10,12 +10,12 @@
         class="white-text">{{day.split('-')[2]}} {{months[day.split('-')[1]]}} {{day.split('-')[0]}}</span></div>
     </div>
     <div *ngFor="let task of tasks[day]; index as i" class="child card-panel" routerLink="/taches/{{task.id}}"
-         [class.green]="task.status === 0"
+         [class.green]="task.status === 0 || task.status === 6"
          [class.purple]="task.status === 1" [class.amber]="task.status === 2" [class.red]="task.status === 3"
-         [class.blue]="task.status === 4" [class.grey]="task.status === 5">
+         [class.blue]="task.status === 4" [class.grey]="task.status === 5" [class.lighten-3]="task.status === 6">
       <div class="baby"><span class="white-text">{{task.content}}</span></div>
     </div>
-    <div class="child card-panel grey" routerLink="/taches/ajouter" [queryParams]="{ due_date: day }">
+    <div class="child card-panel grey lighten-2" routerLink="/taches/ajouter" [queryParams]="{ due_date: day }">
       <div class="baby"><span class="white-text"><i class="material-icons tiny">add</i> Ajouter</span></div>
     </div>
   </div>
