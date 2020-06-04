@@ -40,13 +40,13 @@
           <label for="status" class="edit-label">Où on en est ?</label>
           <select class="browser-default" name="status" id="status" [(ngModel)]="task.status" required>
             <option value="0" [selected]="task.status === 0">Fait</option>
+            <option value="7" [selected]="task.status === 7">Fait sans avoir été prévu</option>
+            <option value="4" [selected]="task.status === 4">Fait après de nombreuses étapes</option>
+            <option value="6" [selected]="task.status === 6">Avancé mais pas terminé</option>
             <option value="1" [selected]="task.status === 1">Non réalisé, indépendamment de ma volonté</option>
             <option value="2" [selected]="task.status === 2">Non réalisé, par manque de temps/flemme</option>
             <option value="3" [selected]="task.status === 3">Echoué/Abandonné</option>
-            <option value="4" [selected]="task.status === 4">Réalisé après de nombreuses étapes</option>
             <option value="5" [selected]="task.status === 5">A faire</option>
-            <option value="6" [selected]="task.status === 6">Avancé mais pas terminé</option>
-            <option value="7" [selected]="task.status === 7">Fait sans avoir été prévu</option>
           </select>
 
         </div>

@@ -5,6 +5,7 @@
       <li *ngIf="!userService.isAuthenticated()"><a routerLink="/connexion">Connexion</a></li>
       <li *ngIf="!userService.isAuthenticated()"><a routerLink="/inscription">Inscription</a></li>
       <li *ngIf="userService.isAuthenticated()"><a routerLink="/taches">Ma liste</a></li>
+      <li *ngIf="userService.isAuthenticated()"><a routerLink="/mon-compte">Mon compte</a></li>
       <li *ngIf="userService.isAuthenticated()"><a routerLink="/deconnexion">Déconnexion</a></li>
     </ul>
   </div>

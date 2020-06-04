@@ -12,6 +12,8 @@ export class UserService {
 
   usersUrl = environment.baseUrl + '/users/';
   loginUrl = this.usersUrl + 'login/';
+  myAccountUrl = this.usersUrl + 'my-account/';
+  downloadDataUrl = this.usersUrl + 'my-data/';
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +32,20 @@ export class UserService {
 
   isAuthenticated(): boolean {
     return localStorage.getItem('token') !== null;
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.myAccountUrl, { headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }}).pipe(
+      catchError(this.handleError),
+    );
+  }
+
+  downloadData(): Observable<any> {
+    return this.http.get(this.downloadDataUrl, { responseType: 'blob', headers: {
+        Authorization: 'Token ' + localStorage.getItem('token')
+      }});
   }
 
   logout(): void {

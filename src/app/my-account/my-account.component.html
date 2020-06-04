@@ -1,0 +1,19 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="col s12 center">
+      <h4>Hey, {{user.username}} ! 👋</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 center">
+      <h5>Télécharger mes données 📦</h5>
+
+      <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous avez le droit à la portabilité de vos données.</p>
+
+      <p><em>afaire</em> prend cela particulièrement à coeur, et vous permet donc de télécharger l'ensemble de celles-ci. Pour ce faire, cliquez sur le gros bouton ci-dessous !</p>
+
+      <p><a (click)="downloadData()" class="btn btn-large blue waves-effect waves-light">Mes données en JSON 🧑‍💻</a> </p>
+    </div>
+  </div>
+</div>
